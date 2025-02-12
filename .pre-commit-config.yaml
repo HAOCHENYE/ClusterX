@@ -1,0 +1,49 @@
+exclude: (^tests/data/)
+repos:
+  - repo: https://github.com/PyCQA/flake8
+    rev: 6.1.0
+    hooks:
+      - id: flake8
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+  - repo: https://github.com/psf/black
+    rev: 23.9.1
+    hooks:
+      - id: black
+        args: ['--exclude', 'webui']
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-yaml
+      - id: requirements-txt-fixer
+      - id: check-merge-conflict
+      - id: fix-encoding-pragma
+        args: ["--remove"]
+      - id: mixed-line-ending
+        args: ["--fix=lf"]
+  - repo: https://github.com/myint/docformatter
+    rev: 06907d0
+    hooks:
+      - id: docformatter
+        args: ["--in-place", "--wrap-descriptions", "79"]
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.3.0
+    hooks:
+      - id: codespell
+        args: ["--skip", "*.ipynb", "-L", "mot"]
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.17
+    hooks:
+      - id: mdformat
+        args: ["--number", "--table-width", "200"]
+        additional_dependencies:
+          - mdformat-openmmlab
+          - mdformat_frontmatter
+          - linkify-it-py
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.2.0
+    hooks:
+      - id: mypy
+        files: ^clusterx

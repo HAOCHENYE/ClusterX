@@ -1,0 +1,7 @@
+{
+    "reportMissingImports": false,
+    "reportMissingModuleSource": false,
+    "reportRedeclaration": false,
+    "reportArgumentType": false,
+    "reportInvalidTypeForm": false,
+}
